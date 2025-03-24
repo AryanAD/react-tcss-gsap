@@ -10,7 +10,7 @@ const AnimatedTitle = ({ title, containerClass }: AnimatedTitleProps) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    const context = gsap.context(() => {
+    const ctx = gsap.context(() => {
       const titleAnimation = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -21,17 +21,20 @@ const AnimatedTitle = ({ title, containerClass }: AnimatedTitleProps) => {
       });
 
       titleAnimation.to(".animated-word", {
-        opacity: "1",
-        transform: "translate3d(0, 0, 0) rotateY(0deg) rotateX(0deg",
+        opacity: 1,
+        transform: "translate3d(0, 0, 0) rotateY(0deg) rotateX(0deg)",
         ease: "power2.inOut",
         stagger: 0.02,
       });
     }, containerRef);
-    return () => context.revert();
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={containerRef} className={`animated-title ${containerClass}`}>
+    <div
+      ref={containerRef}
+      className={`animated-title special-font ${containerClass}`}
+    >
       {title.split("<br />").map((line, index) => (
         <div
           key={index}
