@@ -1,4 +1,4 @@
-import { ReactNode, useRef, useState } from "react";
+import { MouseEvent, ReactNode, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 
 type BentoCardProps = {
@@ -17,7 +17,7 @@ export const BentoTilt = ({ children, className }: BentoTiltProps) => {
   const [transformStyle, setTransformStyle] = useState("");
   const itemRef = useRef<HTMLDivElement | null>(null);
 
-  const handleMouseMove = (event) => {
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
     if (!itemRef.current) return;
 
     const { left, top, width, height } =
@@ -60,7 +60,7 @@ export const BentoCard = ({
   const [hoverOpacity, setHoverOpacity] = useState(0);
   const hoverButtonRef = useRef<HTMLDivElement | null>(null);
 
-  const handleMouseMove = (event) => {
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
     if (!hoverButtonRef.current) return;
     const rect = hoverButtonRef.current.getBoundingClientRect();
 
