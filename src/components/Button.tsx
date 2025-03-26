@@ -1,5 +1,5 @@
 type ButtonProps = {
-  id: string;
+  id?: string;
   title: string;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
